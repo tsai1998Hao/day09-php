@@ -21,5 +21,9 @@ $id_delete= isset($data['id']) ? intval($data['id']) : 0;
 $SQL_delete = "DELETE FROM employees WHERE id={$id_delete}";
 
 $Result=$Connect->query($SQL_delete);
-
+if ($Result) {
+    echo json_encode(["status" => "success", "message" => "刪除成功"]);
+} else {
+    echo json_encode(["status" => "error", "message" => "刪除失敗: " . $Connect->error]);
+}
 ?>
