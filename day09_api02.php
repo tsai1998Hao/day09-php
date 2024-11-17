@@ -16,9 +16,16 @@ if($Connect->connect_error){
     die("失敗".$Connect->connect_error);
 };
 
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit; // 结束预检请求，避免继续执行 比免一次新增兩次資料 要再深究!!!!!!
+}
+
 $data = json_decode(file_get_contents('php://input'), true);  //接收前端AJAX、Fetch出來的 JSON 數據
 
-$employee_account="test";
+$employee_account="test66666";
 $chinese_name="test";
 $employee_password="test";
 $permission_level="test";
